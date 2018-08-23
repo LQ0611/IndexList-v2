@@ -1,0 +1,169 @@
+本组件为带索引列表
+1.将数据按所需要展示顺序排好序；
+   必要字段有contacts、header、info、image、name
+
+    其中，contacts字段为数据的总名称名字；
+          header：为分组的名称、索引的名称
+          image：为左侧所显示的图片，默认宽度高度为：列表高度-15
+          name：为显示的名字
+备注：可添加任意其他数据，但并不会在列表中显示
+{
+  "contacts": [
+    {
+      "header": "A",
+      "info": [
+        {
+          "image":{uri:'http://d.hiphotos.baidu.com/zhidao/pic/item/bf096b63f6246b60bfac143de9f81a4c500fa2dd.jpg'},
+          "name": "Aba",
+        },
+        {
+          "image":{uri:'http://d.hiphotos.baidu.com/zhidao/pic/item/bf096b63f6246b60bfac143de9f81a4c500fa2dd.jpg'},
+          "name": "Appqq",
+        }
+      ]
+    },
+    {
+      "header": "B",
+      "info": [
+        {
+        "image":require('./image/noselect.png'),
+          "name": "Bba",
+        },
+        {
+        "image":require('./image/noselect.png'),
+          "name": "Bppqq",
+        }
+      ]
+    },
+
+2.导入组件
+    import List from '../react-native-indexlist-v2/Select';
+3.回调函数
+    Show(item){
+
+    }
+4.相关参数介绍（参数={值}）
+注意：传入的数据：param，可以为空，但必须要有
+
+        /*传入数据*/
+        param={data}
+
+        /*回调函数*/
+        Show={this.Show.bind(this)}
+
+        /*相关属性详细介绍*/
+        style={相关属性}
+
+5.相关属性介绍（属性：默认值）
+
+        /*分组的组名高度*/
+        heightForSection:30,
+
+        /*分组的组名背景颜色*/
+        sectionBackgroundColor:'#F4F4F4',
+
+        /*分组组名字体大小*/
+        sectionFontSize:20,
+
+        /*分组组名字体颜色*/
+        sectionFontColor:'black',
+
+        /*分组组名左边距*/
+        sectionMarginLeft:5,
+
+        /*列表每一行的高度*/
+        heightForCell:60,
+
+        /*图片、标题左边距*/
+        imgMarginLeft:10,
+        textMarginLeft:10,
+
+        /*主标题字体大小及颜色*/
+        headTitleColor:'black',
+        headTitleFontSize:25,
+
+        /*索引的字体大小及颜色*/
+        letterFontSize:屏幕高度 * 1.1 / 50,
+        letterFontColor:'#D0D0D0',
+
+        /*索引的右边距*/
+        letterMarginRight:10,
+
+        /*索引的上边距*/
+        letterMarginTop:10,
+
+        /*索引列表高度*/
+        letterHeight:(屏幕高度-100) * 4 / 100,
+        /*索引列表宽度*/
+        letterWidth：屏幕宽度 * 4 / 50,
+
+        /*图片的高度、宽度，*/
+        imageHeight:列表高度-15，
+        imageWidth:列表高度-15，
+
+具体用法：
+import List from '../react-native-indexlist/Select';*******导入组件
+import data from './data';*********************************导入数据
+
+*****其他代码*****
+
+
+                <List
+                    param={data}
+                    Show={this.Show.bind(this)}
+
+                    style={{
+                        /*分组的组名高度*/
+                        heightForSection:30,
+
+                        /*分组的组名背景颜色*/
+                        sectionBackgroundColor:'#F4F4F4',
+
+                        /*分组组名字体大小*/
+                        sectionFontSize:20,
+
+                        /*分组组名字体颜色*/
+                        sectionFontColor:'black',
+
+                        /*分组组名左边距*/
+                        sectionMarginLeft:5,
+
+                        /*列表每一行的高度*/
+                        heightForCell:60,
+
+                        /*图片、标题左边距*/
+                        imgMarginLeft:10,
+                        textMarginLeft:10,
+
+                        /*主标题字体大小及颜色*/
+                        headTitleColor:'black',
+                        headTitleFontSize:25,
+
+                        /*索引的字体大小及颜色*/
+                        letterFontSize:15,
+                        letterFontColor:'#D0D0D0',
+
+                        /*索引的右边距*/
+                        letterMarginRight:10,
+
+                        /*索引的上边距*/
+                        letterMarginTop:40,
+
+                        /*索引列表高度*/
+                        letterHeight:500,
+
+                        /*索引列表宽度*/
+                        letterWidth:20,
+
+                        /*图片的高度、宽度，*/
+                        imageHeight:40，
+                        imageWidth:40，
+                    }}
+                />
+                *******回调函数*****
+                 Show(item){
+                        console.log("item",item);*********将返回选中那栏的所有数据
+                        Alert.alert('Show你选择了城市====》' +
+                        item.id + '#####' + item.name);
+                    }
+*****其他代码*****
